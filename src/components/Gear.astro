@@ -1,0 +1,84 @@
+---
+interface GearCard {
+  name: string;
+  tag: string;
+  blurb: string;
+  chips?: string[];
+  rows?: { name: string; value: string }[];
+}
+
+const cards: GearCard[] = [
+  {
+    name: 'Pearl Masters Maple Gum',
+    tag: 'KIT',
+    blurb: 'Maple and gumwood — full-bodied lows, smooth top end. Warm shells, played anything but warmly.',
+    chips: ['22×16 kick', '10×8', '12×9', '13×10', '16×16', '18×16'],
+  },
+  {
+    name: 'Three snare voices',
+    tag: 'SNARES',
+    blurb: 'One for the whisper, one for the punch, one for the crack. Every dynamic shade covered.',
+    rows: [
+      { name: 'Sensitone Maple', value: '14×5' },
+      { name: 'Reference Brass', value: '14×6.5' },
+      { name: 'Brass Piccolo', value: '13×3' },
+    ],
+  },
+  {
+    name: 'Sabian HHX + AAX',
+    tag: 'CYMBALS',
+    blurb: 'Dark, complex HHX tones with AAX cut — atmospheric textures to explosive accents, in a heartbeat.',
+    rows: [
+      { name: 'HHX Complex Ride', value: '21"' },
+      { name: 'HHX Legacy Hats', value: '14"' },
+      { name: 'Crashes, chinas, ozones, splashes', value: '10–19"' },
+    ],
+  },
+];
+---
+
+<section id="gear" class="section-shell">
+  <div data-reveal class="mb-7 flex flex-wrap items-baseline justify-between gap-3">
+    <div>
+      <p class="eyebrow mb-3.5">GEAR</p>
+      <h2 class="m-0 text-[clamp(26px,4vw,40px)] font-bold tracking-[-.01em]">The toolbox.</h2>
+    </div>
+    <div class="text-xs text-bone/50">As played on the Drumeo session, 2025</div>
+  </div>
+
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-3.5">
+    {cards.map(({ name, tag, blurb, chips, rows }) => (
+      <div
+        data-reveal
+        class="rounded-md border border-bone/14 bg-bone/2 p-[clamp(20px,3vw,28px)] transition-[border-color,transform] duration-[.25s] hover:-translate-y-[3px] hover:border-brass"
+      >
+        <div class="flex items-baseline justify-between gap-2.5">
+          <span class="text-base font-semibold">{name}</span>
+          <span class="flex-none text-[10px] tracking-[.16em] text-brass">{tag}</span>
+        </div>
+        <p class="mt-3 mb-0 text-[13px] leading-[1.75] text-bone/65">{blurb}</p>
+
+        {chips && (
+          <div class="mt-4 flex flex-wrap gap-1.5">
+            {chips.map((chip) => (
+              <span class="rounded-[2px] border border-bone/15 px-2.5 py-[5px] text-[11px] text-bone/75">
+                {chip}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {rows && (
+          <div class="mt-4 flex flex-col gap-2 text-xs text-bone/75">
+            {rows.map(({ name: rowName, value }) => (
+              <div class="flex justify-between gap-2.5 border-b border-bone/10 pb-2 last:border-b-0 last:pb-0">
+                <span>{rowName}</span>
+                <span class="text-bone/50">{value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>

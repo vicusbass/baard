@@ -1,0 +1,65 @@
+---
+import { shows } from '../data';
+---
+
+<section id="tour" class="section-shell">
+  <div data-reveal class="mb-2 flex flex-wrap items-baseline justify-between gap-3">
+    <div>
+      <p class="eyebrow mb-3.5">TOUR &amp; CLINICS</p>
+      <h2 class="m-0 text-[clamp(26px,4vw,40px)] font-bold tracking-[-.01em]">
+        Coming to hit things near you.
+      </h2>
+    </div>
+    <span class="flex items-center gap-2 text-[11px] tracking-[.14em] text-bone/65">
+      <span class="h-[7px] w-[7px] animate-[pulseDot_2s_infinite] rounded-full bg-brass"></span>
+      ON TOUR 2026
+    </span>
+  </div>
+
+  <div data-reveal class="mt-5 flex flex-col">
+    {shows.map(({ date, year, venue, city, tag }) => (
+      <div class="grid grid-cols-[76px_1fr_auto] items-center gap-[clamp(12px,3vw,28px)] border-b border-bone/10 px-[clamp(8px,1.5vw,16px)] py-[clamp(16px,2.5vw,22px)] transition-colors duration-[.25s] hover:bg-brass/6">
+        <div>
+          <div class="text-[15px] font-bold text-brass">{date}</div>
+          <div class="mt-0.5 text-[10px] tracking-[.12em] text-bone/50">{year}</div>
+        </div>
+        <div>
+          <div class="text-[clamp(14px,1.8vw,17px)] font-semibold">{venue}</div>
+          <div class="mt-0.5 text-xs text-bone/55">{city}</div>
+        </div>
+        <div class="flex items-center gap-3.5">
+          <span
+            class:list={[
+              'rounded-[2px] border px-2.5 py-[5px] text-[10px] tracking-[.14em]',
+              tag === 'CLINIC' ? 'border-brass/50 text-brass' : 'border-bone/20 text-bone/55',
+            ]}
+          >
+            {tag}
+          </span>
+          <a href="#contact" class="text-xs tracking-[.1em] text-bone/70 transition-colors hover:text-brass">
+            TICKETS →
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div
+    data-reveal
+    id="contact"
+    class="mt-7 flex scroll-mt-24 flex-wrap items-center justify-between gap-[18px] rounded-md border border-brass/35 bg-[linear-gradient(120deg,rgba(201,163,106,.07),rgba(201,163,106,0))] p-[clamp(20px,3.5vw,32px)]"
+  >
+    <div>
+      <div class="text-[clamp(17px,2.2vw,21px)] font-semibold">Want a clinic in your city?</div>
+      <div class="mt-1.5 text-[13px] text-bone/65">
+        He travels with fewer drums than you'd think. Booking &amp; management inquiries welcome.
+      </div>
+    </div>
+    <a
+      href="mailto:baard.kolstad@gmail.com"
+      class="inline-flex flex-none items-center gap-2.5 rounded-[2px] bg-brass px-6 py-3.5 text-xs font-semibold tracking-[.18em] text-ink transition-opacity duration-[.25s] hover:opacity-85"
+    >
+      GET IN TOUCH <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

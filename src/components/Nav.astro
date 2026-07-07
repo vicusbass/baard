@@ -1,0 +1,103 @@
+---
+import { socials } from '../data';
+
+const links = [
+  { href: '#bio', label: 'Bio' },
+  { href: '#gear', label: 'Gear' },
+  { href: '#music', label: 'Music' },
+  { href: '#tour', label: 'Tour' },
+];
+---
+
+<header
+  class="fixed inset-x-0 top-0 z-50 flex items-center justify-between border-b border-bone/8 bg-ink/70 px-[clamp(20px,5vw,56px)] py-4 backdrop-blur-[12px]"
+>
+  <a href="#top" class="text-[13px] font-bold tracking-[.24em]">BK</a>
+
+  <nav
+    aria-label="Primary"
+    class="hidden gap-[clamp(14px,3vw,28px)] text-[11px] tracking-[.16em] text-bone/80 nav:flex"
+  >
+    {links.map(({ href, label }) => (
+      <a href={href} class="transition-colors hover:text-brass">{label.toUpperCase()}</a>
+    ))}
+    <a href="#contact" class="text-brass">CONTACT</a>
+  </nav>
+
+  <button
+    id="menu-toggle"
+    type="button"
+    aria-label="Menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    class="group -my-2.5 -mr-2.5 flex h-11 w-11 cursor-pointer flex-col justify-center gap-[5px] p-2.5 nav:hidden"
+  >
+    <span class="block h-0.5 w-full rounded-[1px] bg-bone transition-transform duration-300 group-aria-expanded:translate-y-[7px] group-aria-expanded:rotate-45"></span>
+    <span class="block h-0.5 w-full rounded-[1px] bg-bone transition-opacity duration-300 group-aria-expanded:opacity-0"></span>
+    <span class="block h-0.5 w-full rounded-[1px] bg-bone transition-transform duration-300 group-aria-expanded:-translate-y-[7px] group-aria-expanded:-rotate-45"></span>
+  </button>
+</header>
+
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden animate-[fadeUp_.35s_ease_both] flex-col justify-center bg-ink/[.97] px-[clamp(28px,8vw,56px)] backdrop-blur-[10px] nav:hidden"
+>
+  <p class="eyebrow mb-[26px]">MENU</p>
+  <nav aria-label="Mobile" class="flex flex-col gap-1.5">
+    {links.map(({ href, label }) => (
+      <a
+        href={href}
+        class="py-2 text-[clamp(34px,9vw,48px)] font-bold tracking-[-.01em] transition-colors hover:text-brass"
+      >
+        {label}
+      </a>
+    ))}
+    <a
+      href="#contact"
+      class="py-2 text-[clamp(34px,9vw,48px)] font-bold tracking-[-.01em] text-brass"
+    >
+      Contact
+    </a>
+  </nav>
+  <div class="mt-10 flex flex-wrap gap-3">
+    {socials.map(({ menuLabel, name, url }) => (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener"
+        aria-label={name}
+        class="inline-flex min-h-11 items-center justify-center rounded-full border border-bone/30 px-[18px] text-xs tracking-[.16em] text-bone/90 transition-colors hover:border-brass hover:text-brass"
+      >
+        {menuLabel}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+
+  const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
+
+  const setOpen = (open: boolean) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    document.body.classList.toggle('overflow-hidden', open);
+  };
+
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+
+  menu.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) setOpen(false);
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen()) setOpen(false);
+  });
+
+  window.matchMedia('(min-width: 720px)').addEventListener('change', (event) => {
+    if (event.matches && isOpen()) setOpen(false);
+  });
+</script>

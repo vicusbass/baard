@@ -1,0 +1,60 @@
+---
+const lines = ['Baard', 'Kolstad'];
+let letterIndex = 0;
+---
+
+<section id="top" class="relative flex min-h-svh items-end overflow-hidden">
+  <img
+    src="/baard-kolstad-drumeo.jpg"
+    alt="Baard Kolstad at his kit"
+    width="1400"
+    height="933"
+    fetchpriority="high"
+    class="absolute inset-0 h-full w-full animate-[slowZoom_2.4s_ease-out_both] object-cover object-[50%_20%] contrast-105 saturate-85 nav:object-[60%_20%]"
+  />
+  <div
+    class="absolute inset-0 bg-[linear-gradient(180deg,rgba(21,19,17,.35)_0%,rgba(21,19,17,0)_35%,rgba(21,19,17,.95)_90%)]"
+  >
+  </div>
+
+  <div class="relative mx-auto w-full max-w-[1160px] px-[clamp(20px,5vw,56px)] pb-[clamp(36px,7vh,72px)]">
+    <p class="mb-3.5 animate-[fadeUp_.8s_.1s_ease_both] text-[clamp(11px,1.4vw,13px)] tracking-[.32em] text-brass">
+      DRUMS — LEPROUS · RENDEZVOUS POINT · ICS VORTEX
+    </p>
+
+    <h1
+      data-glitch-title
+      aria-label="Baard Kolstad"
+      class="m-0 text-[clamp(52px,11vw,124px)] leading-[.94] font-bold tracking-[-.015em]"
+    >
+      {lines.map((word, lineIndex) => (
+        <span
+          aria-hidden="true"
+          class="-mt-[.06em] -mb-[.02em] block origin-bottom-left overflow-hidden pt-[.06em] pb-[.02em]"
+          style={`animation:kickPulse .5s ease ${(1.15 + lineIndex * 0.12).toFixed(2)}s 1 both`}
+        >
+          {word.split('').map((letter) => (
+            <span
+              class="inline-block"
+              style={`animation:letterRise .7s cubic-bezier(.2,1.4,.3,1) both ${(0.25 + letterIndex++ * 0.055).toFixed(3)}s`}
+            >
+              {letter}
+            </span>
+          ))}
+        </span>
+      ))}
+    </h1>
+
+    <div class="mt-5 flex animate-[fadeUp_.8s_.4s_ease_both] flex-wrap items-end justify-between gap-4">
+      <p class="m-0 max-w-[420px] text-[clamp(14px,1.8vw,17px)] leading-[1.55] text-bone/70">
+        Hits things for a living. Very precisely.
+      </p>
+      <a
+        href="#tour"
+        class="inline-flex items-center gap-2.5 rounded-[2px] border border-brass/50 px-[22px] py-[13px] text-xs tracking-[.18em] text-brass transition-all duration-[.25s] hover:bg-brass hover:text-ink"
+      >
+        SEE TOUR DATES <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>

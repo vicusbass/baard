@@ -1,0 +1,53 @@
+---
+import { albums } from '../data';
+---
+
+<section id="music" class="section-shell">
+  <div data-reveal class="mb-7 flex flex-wrap items-baseline justify-between gap-3">
+    <div>
+      <p class="eyebrow mb-3.5">DISCOGRAPHY</p>
+      <h2 class="m-0 text-[clamp(26px,4vw,40px)] font-bold tracking-[-.01em]">
+        Records he hit things on.
+      </h2>
+    </div>
+    <div class="text-xs text-bone/50">Selected albums</div>
+  </div>
+
+  <div class="grid grid-cols-1 gap-[clamp(18px,2.5vw,24px)] min-[480px]:grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+    {albums.map(({ title, band, year, cover, url }) => (
+      <div
+        data-reveal-card
+        class="flex flex-col gap-3 transition-transform duration-[.25s] hover:-translate-y-1"
+      >
+        <div
+          data-cover
+          class="relative aspect-square overflow-hidden rounded border border-bone/12 bg-[#1a1712]"
+        >
+          <img
+            src={cover}
+            alt={`${title} artwork`}
+            width="320"
+            height="320"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <span class="pointer-events-none absolute top-2.5 left-2.5 rounded-[2px] bg-ink/60 px-2 py-1 text-[9px] tracking-[.16em] text-bone/55">
+            {year}
+          </span>
+        </div>
+        <div>
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener"
+            class="text-[13.5px] leading-[1.3] font-semibold transition-colors hover:text-brass"
+          >
+            {title}
+          </a>
+          <div class="mt-[3px] text-[11px] tracking-[.1em] text-bone/50">{band}</div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

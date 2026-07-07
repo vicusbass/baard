@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Bio from '../components/Bio.astro';
+import Gear from '../components/Gear.astro';
+import Discography from '../components/Discography.astro';
+import Tour from '../components/Tour.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Baard Kolstad — Drums"
+  description="Baard Kolstad — drummer for Leprous, Rendezvous Point and ICS Vortex. Bio, gear, discography, tour dates and clinic bookings."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <Bio />
+    <Gear />
+    <Discography />
+    <Tour />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReducedMotion) {
+    // Scroll-reveal: fade+rise [data-reveal] blocks; covers pop in with a slight tilt.
+    const reveals = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal-card]'));
+
+    for (const el of reveals) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity .7s ease, transform .7s ease';
+    }
+    for (const el of cards) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px) scale(.94) rotate(-1.5deg)';
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const el = entry.target as HTMLElement;
+          if (el.hasAttribute('data-reveal-card')) {
+            const delay = (Array.from(el.parentElement!.children).indexOf(el) % 6) * 80;
+            el.style.transition = `opacity .6s ease ${delay}ms, transform .7s cubic-bezier(.2,1.3,.35,1) ${delay}ms`;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            // Hand transform control back to the hover utilities once the entrance settles.
+            setTimeout(() => {
+              el.style.transition = '';
+              el.style.transform = '';
+              el.style.opacity = '';
+            }, delay + 750);
+          } else {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.12 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    cards.forEach((el) => observer.observe(el));
+
+    // Random glitch: every few seconds one discography cover flickers like a bad video feed.
+    const covers = Array.from(document.querySelectorAll<HTMLElement>('[data-cover]'));
+    const glitchCover = () => {
+      if (covers.length) {
+        const el = covers[Math.floor(Math.random() * covers.length)]!;
+        el.style.animation = 'coverGlitch .55s steps(1,end) 1';
+        el.addEventListener('animationend', () => { el.style.animation = ''; }, { once: true });
+      }
+      setTimeout(glitchCover, 1200 + Math.random() * 1800);
+    };
+    setTimeout(glitchCover, 1500);
+
+    // Hero title: brief RGB-split flicker on the name, every 4–8 seconds.
+    const title = document.querySelector<HTMLElement>('[data-glitch-title]');
+    const glitchTitle = () => {
+      if (title) {
+        title.style.animation = 'titleGlitch .5s steps(1,end) 1';
+        title.addEventListener('animationend', () => { title.style.animation = ''; }, { once: true });
+      }
+      setTimeout(glitchTitle, 4000 + Math.random() * 4000);
+    };
+    setTimeout(glitchTitle, 2000);
+  }
+</script>
