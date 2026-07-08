@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import portrait from '../assets/baard-kolstad-drumeo.jpg';
+
 const stats = [
   { value: '2014', label: 'JOINED LEPROUS' },
   { value: '700+', label: 'SHOWS PLAYED' },
@@ -32,13 +35,11 @@ const stats = [
     </div>
 
     <div data-reveal class="relative aspect-4/5 min-h-80 overflow-hidden rounded">
-      <img
-        src="/baard-kolstad-drumeo.jpg"
+      <Image
+        src={portrait}
         alt="Baard behind the kit"
-        width="1400"
-        height="933"
-        loading="lazy"
-        decoding="async"
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 660px) 50vw, 100vw"
         class="absolute inset-0 h-full w-full object-cover object-[48%_15%] grayscale-50 contrast-108"
       />
       <span class="absolute bottom-3.5 left-3.5 bg-ink/65 px-3 py-1.5 text-[10px] tracking-[.2em] text-bone/85 backdrop-blur-[4px]">

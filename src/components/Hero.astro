@@ -1,14 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/baard-kolstad-drumeo.jpg';
+
 const lines = ['Baard', 'Kolstad'];
 let letterIndex = 0;
 ---
 
 <section id="top" class="relative flex min-h-svh items-end overflow-hidden">
-  <img
-    src="/baard-kolstad-drumeo.jpg"
+  <Image
+    src={heroImage}
     alt="Baard Kolstad at his kit"
-    width="1400"
-    height="933"
+    widths={[640, 960, heroImage.width]}
+    sizes="100vw"
+    loading="eager"
     fetchpriority="high"
     class="absolute inset-0 h-full w-full animate-[slowZoom_2.4s_ease-out_both] object-cover object-[50%_20%] contrast-105 saturate-85 nav:object-[60%_20%]"
   />
@@ -30,7 +34,7 @@ let letterIndex = 0;
       {lines.map((word, lineIndex) => (
         <span
           aria-hidden="true"
-          class="-mt-[.06em] -mb-[.02em] block origin-bottom-left overflow-hidden pt-[.06em] pb-[.02em]"
+          class="mt-[-0.06em] mb-[-0.02em] block origin-bottom-left overflow-hidden pt-[.06em] pb-[.02em]"
           style={`animation:kickPulse .5s ease ${(1.15 + lineIndex * 0.12).toFixed(2)}s 1 both`}
         >
           {word.split('').map((letter) => (

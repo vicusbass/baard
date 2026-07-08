@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { albums } from '../data';
 ---
 
@@ -23,13 +24,9 @@ import { albums } from '../data';
           data-cover
           class="relative aspect-square overflow-hidden rounded border border-bone/12 bg-[#1a1712]"
         >
-          <img
+          <Image
             src={cover}
             alt={`${title} artwork`}
-            width="320"
-            height="320"
-            loading="lazy"
-            decoding="async"
             class="absolute inset-0 h-full w-full object-cover"
           />
           <span class="pointer-events-none absolute top-2.5 left-2.5 rounded-[2px] bg-ink/60 px-2 py-1 text-[9px] tracking-[.16em] text-bone/55">
