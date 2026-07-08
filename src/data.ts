@@ -43,14 +43,62 @@ export interface Album {
 }
 
 export const albums: Album[] = [
-  { title: 'Melodies of Atonement', band: 'LEPROUS', year: '2024', cover: '/covers/melodies-of-atonement.webp', url: spotifyArtist },
-  { title: 'Aphelion', band: 'LEPROUS', year: '2021', cover: '/covers/aphelion.webp', url: spotifyArtist },
-  { title: 'Pitfalls', band: 'LEPROUS', year: '2019', cover: '/covers/pitfalls.webp', url: spotifyArtist },
-  { title: 'Malina', band: 'LEPROUS', year: '2017', cover: '/covers/malina.webp', url: spotifyArtist },
-  { title: 'The Congregation', band: 'LEPROUS', year: '2015', cover: '/covers/the-congregation.webp', url: spotifyArtist },
-  { title: 'Dream Chaser', band: 'RENDEZVOUS POINT', year: '2024', cover: '/covers/dream-chaser.webp', url: spotifyArtist },
-  { title: 'Universal Chaos', band: 'RENDEZVOUS POINT', year: '2019', cover: '/covers/universal-chaos.webp', url: spotifyArtist },
-  { title: 'Winter Thrice', band: 'BORKNAGAR', year: '2016', cover: '/covers/winter-thrice.webp', url: spotifyArtist },
+  {
+    title: 'Melodies of Atonement',
+    band: 'LEPROUS',
+    year: '2024',
+    cover: '/covers/melodies-of-atonement.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Aphelion',
+    band: 'LEPROUS',
+    year: '2021',
+    cover: '/covers/aphelion.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Pitfalls',
+    band: 'LEPROUS',
+    year: '2019',
+    cover: '/covers/pitfalls.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Malina',
+    band: 'LEPROUS',
+    year: '2017',
+    cover: '/covers/malina.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'The Congregation',
+    band: 'LEPROUS',
+    year: '2015',
+    cover: '/covers/the-congregation.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Dream Chaser',
+    band: 'RENDEZVOUS POINT',
+    year: '2024',
+    cover: '/covers/dream-chaser.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Universal Chaos',
+    band: 'RENDEZVOUS POINT',
+    year: '2019',
+    cover: '/covers/universal-chaos.webp',
+    url: spotifyArtist,
+  },
+  {
+    title: 'Winter Thrice',
+    band: 'BORKNAGAR',
+    year: '2016',
+    cover: '/covers/winter-thrice.webp',
+    url: spotifyArtist,
+  },
 ];
 
 export interface Show {
@@ -63,9 +111,33 @@ export interface Show {
 
 export const shows: Show[] = [
   { date: 'SEP 12', year: '2026', venue: 'Sentrum Scene', city: 'Oslo, Norway', tag: 'LEPROUS' },
-  { date: 'SEP 18', year: '2026', venue: 'Huxleys Neue Welt', city: 'Berlin, Germany', tag: 'LEPROUS' },
-  { date: 'OCT 02', year: '2026', venue: '013 Poppodium', city: 'Tilburg, Netherlands', tag: 'LEPROUS' },
-  { date: 'OCT 14', year: '2026', venue: 'Drum City — solo clinic', city: 'Oslo, Norway', tag: 'CLINIC' },
+  {
+    date: 'SEP 18',
+    year: '2026',
+    venue: 'Huxleys Neue Welt',
+    city: 'Berlin, Germany',
+    tag: 'LEPROUS',
+  },
+  {
+    date: 'OCT 02',
+    year: '2026',
+    venue: '013 Poppodium',
+    city: 'Tilburg, Netherlands',
+    tag: 'LEPROUS',
+  },
+  {
+    date: 'OCT 14',
+    year: '2026',
+    venue: 'Drum City — solo clinic',
+    city: 'Oslo, Norway',
+    tag: 'CLINIC',
+  },
   { date: 'NOV 07', year: '2026', venue: 'Electric Ballroom', city: 'London, UK', tag: 'LEPROUS' },
-  { date: 'NOV 21', year: '2026', venue: 'Drumeo Studios — clinic', city: 'Abbotsford, Canada', tag: 'CLINIC' },
+  {
+    date: 'NOV 21',
+    year: '2026',
+    venue: 'Drumeo Studios — clinic',
+    city: 'Abbotsford, Canada',
+    tag: 'CLINIC',
+  },
 ];

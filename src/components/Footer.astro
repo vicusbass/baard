@@ -4,11 +4,16 @@ import { socials } from '../data';
 
 <footer class="mx-auto mt-[clamp(64px,10vw,120px)] max-w-[1160px] px-[clamp(20px,5vw,56px)]">
   <div class="flex flex-wrap items-center justify-between gap-[18px] border-t border-bone/10 pt-[clamp(28px,4vw,44px)] pb-[clamp(28px,4vw,40px)]">
-    <div>
-      <div class="text-[13px] font-bold tracking-[.24em]">BAARD KOLSTAD</div>
-      <div class="mt-1.5 text-[11px] text-bone/45">
-        © 2026 · Oslo, Norway · Powered by coffee and single strokes
-      </div>
+    <div class="text-[11px] text-bone/45">
+      made by{' '}
+      <a
+        href="https://vicusbass.com"
+        target="_blank"
+        rel="noopener"
+        class="font-bold tracking-[.06em] text-bone/80 transition-colors hover:text-brass"
+      >
+        vicusbass
+      </a>
     </div>
     <div class="flex gap-2.5">
       {socials.map(({ abbr, name, url }) => (
@@ -17,7 +22,7 @@ import { socials } from '../data';
           target="_blank"
           rel="noopener"
           aria-label={name}
-          class="flex h-11 w-11 items-center justify-center rounded-full border border-bone/18 text-[10.5px] tracking-[.06em] text-bone/80 transition-colors duration-[.25s] hover:border-brass hover:text-brass"
+          class="flex h-11 w-11 items-center justify-center rounded-full border border-bone/35 text-[11.5px] font-semibold tracking-[.06em] text-bone transition-colors duration-[.25s] hover:border-brass hover:bg-brass hover:text-ink"
         >
           {abbr}
         </a>

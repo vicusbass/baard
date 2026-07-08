@@ -1,5 +1,6 @@
 ---
 import '@fontsource-variable/space-grotesk';
+import 'lenis/dist/lenis.css';
 import '../styles/global.css';
 
 interface Props {
@@ -21,7 +22,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -50,3 +51,23 @@ const ogImageURL = new URL(ogImage, Astro.site);
     <slot />
   </body>
 </html>
+
+<script>
+  import Lenis from 'lenis';
+  import Snap from 'lenis/snap';
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const lenis = new Lenis({ autoRaf: true, anchors: true });
+    window.__lenis = lenis;
+
+    // Gentle magnet: when scrolling settles near the top of a section, ease onto it.
+    const snap = new Snap(lenis, {
+      type: 'proximity',
+      distanceThreshold: '20%',
+      duration: 0.9,
+    });
+    for (const section of document.querySelectorAll<HTMLElement>('main > section')) {
+      snap.addElement(section, { align: 'start' });
+    }
+  }
+</script>

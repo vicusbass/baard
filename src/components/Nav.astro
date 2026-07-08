@@ -85,6 +85,9 @@ const links = [
     menu.classList.toggle('hidden', !open);
     menu.classList.toggle('flex', open);
     document.body.classList.toggle('overflow-hidden', open);
+    // Pause Lenis while the overlay is open so wheel input can't scroll the page behind it.
+    if (open) window.__lenis?.stop();
+    else window.__lenis?.start();
   };
 
   toggle.addEventListener('click', () => setOpen(!isOpen()));
